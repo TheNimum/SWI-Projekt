@@ -30,7 +30,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #fbff00;
-  margin: 0;
+  
+  background-color: black;
   
 }
 </style>
