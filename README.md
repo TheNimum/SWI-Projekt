@@ -1,4 +1,4 @@
-https://github.com/TheNimum/SWI-Projekt/issues/1#issue-996783517
+![image](https://user-images.githubusercontent.com/70508714/133395427-4aefbf35-9ff9-4a93-b3c0-aca0d4ad57e3.png)
 
 # swi-projekt
 
