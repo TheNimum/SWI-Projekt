@@ -5,7 +5,9 @@
 	<button id="tryck" v-on:click="sendRequest">tryck här</button>
 	<div>
 		<ul id="exempel1">
-		<li>{{apiReturn.name}}</li>
+		<li> name: {{apiReturn.name}}</li>
+		<li> birth year: {{apiReturn.birth_year}}</li>
+		<li> lenght: {{apiReturn.height}}</li>
 		
 		</ul></div>
 
@@ -17,7 +19,7 @@
 export default ({
 	data: () => ( {
 		search: '0',		
-			apiReturn: {},
+			apiReturn: { },
 			searchQuery: null
 	}),
 	
@@ -26,14 +28,12 @@ export default ({
 		async sendRequest() {
 			const url = `https://swapi.dev/api/people/?search=${this.search}`
 			try {
+				
 				const response = await fetch(url)
 				const data = await response.json()				
 				console.log('api:', data);
-				const x = Object.keys(data);
-				console.log('x',x )
-				const y =  Object.entries(data);
-				console.log('y', y)
-				this.apiReturn = data;
+
+				this.apiReturn = data.results[0];
 				
 			}
 			catch{
