@@ -10,7 +10,7 @@
 		<li> born: {{apiReturn.birth_year}}</li>
 		<li> lenght: {{apiReturn.height}} cm </li>
 		</ul></div>
-	<div v-for="item in getAllchar" :key="item">
+	<div v-for="item in getAllchar" :key="item.name">
 		{{item.name}}
 	</div>
 </div>
@@ -47,12 +47,7 @@ export default ({
 			
 			const response = await fetch(url)
 			const data = await response.json()
-			for (let i = 0; i < data.results.length; i++) {
-				var info = data.results[i];
-				
-			}
-			this.getAllchar = [info];
-			
+			this.getAllchar = data.results;
 			console.log('Get request from api ', data)
 
 		}
