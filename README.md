@@ -1,4 +1,4 @@
-![image](https://user-images.githubusercontent.com/70508714/133587364-f6dae0d7-78d9-4df7-9217-4d918222d598.png)
+![image](https://user-images.githubusercontent.com/70508714/133628129-d77f0a24-9af1-4c41-bc8e-6e697db7e4aa.png)
 
 # swi-projekt
 
