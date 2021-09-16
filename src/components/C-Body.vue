@@ -7,11 +7,11 @@
 	<div>
 		<ul class="temp-list">
 		<li> name: {{apiReturn.name}}</li>
-		<li> birth year: {{apiReturn.birth_year}}</li>
-		<li> lenght: {{apiReturn.height}}</li>
+		<li> born: {{apiReturn.birth_year}}</li>
+		<li> lenght: {{apiReturn.height}} cm </li>
 		</ul></div>
-	<div class="listOfChar">
-		{{characters}}
+	<div v-for="item in getAllchar" :key="item">
+		{{item.name}}
 	</div>
 </div>
 
@@ -20,16 +20,16 @@
 <script>
 export default ({
 	data: () => ( {
-		search: '0',		
-		apiReturn: {},
-		characters: {},
-		
-			
+		search: '',		
+		apiReturn: '',
+		getAllchar:[],
+		element: 0			
 	}),
 	
 	
+	
 	methods: {
-		async sendRequest() {
+		async sendRequest() { // tryck här knappen.
 			const url = `https://swapi.dev/api/people/?search=${this.search}`
 			try {				
 				const response = await fetch(url)
@@ -41,28 +41,30 @@ export default ({
 				return null;
 			}
 		},
-		async getRequest()
+		async getRequest() // hämta
 		{
-			const url = `https://swapi.dev/api/people/?search=${this.search}`
+			const url = `https://swapi.dev/api/people/`
 			
 			const response = await fetch(url)
 			const data = await response.json()
-			
-			for (let i = 0; i < data.length; i++) {
+			for (let i = 0; i < data.results.length; i++) {
+				var info = data.results[i];
 				
-				const x = data.results[i];
-				this.characters = x;
 			}
-			console.log('data', data)
-				
+			this.getAllchar = [info];
 			
-			
+			console.log('Get request from api ', data)
+
 		}
 	} 
 })
 </script>
 
 <style scoped>
+.listOfChar
+{
+	border: dotted darkorange;
+}
 .main-Container{
 	background-color: black;
 	border: dotted rgb(129, 199, 221);
