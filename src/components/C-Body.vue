@@ -3,15 +3,17 @@
 	<h2> Main </h2>
 	<input id="temp-name" v-model="search" placeholder="Sök" >
 	<button class="tryck" v-on:click="sendRequest">tryck här</button>
-	<button class="getall" v-on:click="getRequest">hämta lista</button>
+	<!-- <button class="getall" v-on:click="getRequest">hämta lista</button> -->
 	<div>
 		<ul class="temp-list">
-		<li> name: {{apiReturn.name}}</li>
-		<li> born: {{apiReturn.birth_year}}</li>
-		<li> lenght: {{apiReturn.height}} cm </li>
+		<p>name: {{apiReturn.name}}<br>
+		born: {{apiReturn.birth_year}}<br>
+		eye-color: {{apiReturn.eye_color}}</p>
 		</ul></div>
-	<div v-for="item in getAllchar" :key="item.name">
+	<div class="listOfChars">
+		<ul v-for="item in getAllchar" :key="item.name" >
 		{{item.name}}
+		</ul>
 	</div>
 </div>
 
@@ -25,7 +27,9 @@ export default ({
 		getAllchar:[],
 		element: 0			
 	}),
-	
+	mounted(){this.$nextTick(function(){
+		this.getRequest();
+	})},
 	
 	
 	methods: {
@@ -56,19 +60,26 @@ export default ({
 </script>
 
 <style scoped>
-.listOfChar
+.listOfChars
 {
 	border: dotted darkorange;
+	margin-left: 15em;
+	margin-right: 15em;
+	margin-bottom: 10px;
 }
 .main-Container{
 	background-color: black;
 	border: dotted rgb(129, 199, 221);
 }
 .temp-list{
+	padding: 5px;
+	padding-left: 2em;
+	
 	border: dotted hotpink;
 	transition: 0,5s;
 	margin-left: 15em;
 	margin-right: 15em;
+	text-align: left;
 	align-content: center;
 }
 </style>
