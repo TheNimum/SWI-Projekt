@@ -2,13 +2,17 @@
 <div class="main-Container">
 	<h2> Main </h2>
 	<input id="temp-name" v-model="search" placeholder="Sök" >
-	<button class="tryck" v-on:click="sendRequest">tryck här</button>
-	<!-- <button class="getall" v-on:click="getRequest">hämta lista</button> -->
+	<button class="people" v-on:click="sendRequest">People</button>
+	<button class="planet" v-on:click="sendRequest2">planet</button>
+	
 	<div>
 		<ul class="temp-list">
-		<p>name: {{apiReturn.name}}<br>
-		born: {{apiReturn.birth_year}}<br>
-		eye-color: {{apiReturn.eye_color}}</p>
+		<span on v-show="pressPeople">
+		name: {{apiReturn.name}}<br></span>
+		<div v-show="peopleinfo"> {{apiReturn.birth_year}}<br>
+		eye-color: {{apiReturn.eye_color}}<br></div>
+
+		
 		</ul></div>
 	<div class="listOfChars">
 		<ul v-for="item in getAllchar" :key="item.name" >
@@ -25,7 +29,9 @@ export default ({
 		search: '',		
 		apiReturn: '',
 		getAllchar:[],
-		element: 0			
+		element: 0,
+		pressPeople: false,
+		peopleinfo: false		
 	}),
 	mounted(){this.$nextTick(function(){
 		this.getRequest();
@@ -39,7 +45,23 @@ export default ({
 				const response = await fetch(url)
 				const data = await response.json()				
 				console.log('api:', data);
-				this.apiReturn = data.results[0];				
+				this.apiReturn = data.results[0];
+				this.pressPeople = true;
+				this.peopleinfo = true;				
+			}
+			catch{
+				return null;
+			}
+		},
+		async sendRequest2() {
+			const url = `https://swapi.dev/api/planets/?search=${this.search}`
+			try {				
+				const response = await fetch(url)
+				const data = await response.json()				
+				console.log('api:', data);
+				this.apiReturn = data.results[0];
+				this.pressPeople = true;
+				this.peopleinfo = false;					
 			}
 			catch{
 				return null;
