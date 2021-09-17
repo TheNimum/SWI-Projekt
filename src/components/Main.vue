@@ -29,6 +29,7 @@
 </template>
 
 <script>
+
 export default ({
 	data: () => ( {
 		search: '',		
@@ -36,7 +37,8 @@ export default ({
 		getAllchar:[],
 		element: 0,
 		pressPeople: false,
-		peopleinfo: false		
+		peopleinfo: false,
+			
 	}),
 	mounted(){this.$nextTick(function(){
 		this.getRequest();
