@@ -1,13 +1,21 @@
 <template>
-  <header class="page-header">
-    <p>Header</p>
-  </header>
-    <nav class="navbar">
-    <a class="active" href="#home">Home</a>
-    <a href="#people">People</a>
-    <a href="#films">Films</a>
-  </nav>
+<header>
+<div class="testX">
+<h2>test</h2>
+</div>
 
+<div class="headerBox">
+  <nav class="navbar">
+	<a class="active" href="#home">Home</a>
+	<a href="#people">People</a>
+	<a href="#films">Films</a>
+	<input id="temp-name" v-model="search" placeholder="Sök" >
+	<button class="people" v-on:click="sendRequest">People</button>
+	<button class="planet" v-on:click="sendRequest2">planet</button>
+	
+  </nav>
+  </div>
+</header>
 </template>
 
 <script>
@@ -21,21 +29,22 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.page-header{
-  
+.testX{
+  border: dotted firebrick;
+}
+.headerBox{
+  padding: 14px 16px;
+  align-content: center;
   margin: 0px;
   border:dotted Darkred;
 }
 
-.navbar a {
-	float: left;
-	}
-
-.navbar a {
+.navbar a{
+  float: left;
 	display: block;
 	color: #ffe6ff;
 	text-align: center;
-	padding: 14px 16px;
+	padding-left:1em;
 	text-decoration: none;
 	}
 

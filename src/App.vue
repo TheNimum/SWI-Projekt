@@ -1,15 +1,16 @@
 <template>
-<div>
+<body>
   <Header></Header>
   <CBody></CBody>
   <CFooter></CFooter>
-</div>
+</body>
+
 </template>
 
 <script>
 import Header from './components/Header.vue'
-import CBody from './components/C-Body.vue'
-import CFooter from './components/C-Footer.vue'
+import CBody from './components/Main.vue'
+import CFooter from './components/Footer.vue'
 
 
 export default {
