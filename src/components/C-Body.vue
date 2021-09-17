@@ -11,9 +11,8 @@
 		name: {{apiReturn.name}}<br></span>
 		<div v-show="peopleinfo"> {{apiReturn.birth_year}}<br>
 		eye-color: {{apiReturn.eye_color}}<br></div>
-
-		
-		</ul></div>
+		</ul>
+	</div>
 	<div class="listOfChars">
 		<ul v-for="item in getAllchar" :key="item.name" >
 		{{item.name}}
