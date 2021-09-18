@@ -9,9 +9,9 @@
 	<a class="active" href="#home">Home</a>
 	<a href="#people">People</a>
 	<a href="#films">Films</a>
-	<input id="temp-name" v-model="search" placeholder="Sök" >
-	<button class="people" v-on:click="sendRequest">People</button>
-	<button class="planet" v-on:click="sendRequest2">planet</button>
+	<input id="temp-name"  v-bind:property="search" placeholder="Sök" >
+	<button class="people" @click="sendRequest">People</button>
+	<button class="planet" @click="sendRequest2">planet</button>
 	
   </nav>
   </div>
@@ -19,11 +19,12 @@
 </template>
 
 <script>
+
 export default {
+  
   name: 'Header',
-  props:{
-    msg: String
-  }
+  data: () => ({search: ''}) 
+  
 }
 </script>
 

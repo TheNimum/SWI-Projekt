@@ -1,21 +1,12 @@
 <template>
 <div class="main-Container">
-	<!-- <h2> Main </h2>
-<nav class="navbar">
-	<a class="active" href="#home">Home</a>
-	<a href="#people">People</a>
-	<a href="#films">Films</a>
-	<input id="temp-name" v-model="search" placeholder="Sök" >
-	<button class="people" v-on:click="sendRequest">People</button>
-	<button class="planet" v-on:click="sendRequest2">planet</button>
-	
-  </nav> -->
-  
+
 	<div>
 		<ul class="temp-list">
 		<span on v-show="pressPeople">
 		name: {{apiReturn.name}}<br></span>
-		<div v-show="peopleinfo">born: {{apiReturn.birth_year}}<br>
+		<div v-show="peopleinfo">
+		born: {{apiReturn.birth_year}}<br>
 		eye-color: {{apiReturn.eye_color}}<br></div>
 		</ul>
 	</div>
@@ -31,15 +22,19 @@
 <script>
 
 export default ({
+	props: {
+		property: String
+	},
+
 	data: () => ( {
-		search: '',		
+				
 		apiReturn: '',
 		getAllchar:[],
 		element: 0,
 		pressPeople: false,
-		peopleinfo: false,
-			
+		peopleinfo: false,	
 	}),
+
 	mounted(){this.$nextTick(function(){
 		this.getRequest();
 	})},
