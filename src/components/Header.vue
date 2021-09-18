@@ -1,7 +1,7 @@
 <template>
 <header>
 <div class="testX">
-<h2>test</h2>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/1280px-Star_Wars_Logo.svg.png">
 </div>
 
 <div class="headerBox">
@@ -31,6 +31,9 @@ export default {
 <style scoped>
 .testX{
   border: dotted firebrick;
+}
+.testX img{
+  max-width: 20%;
 }
 .headerBox{
   padding: 14px 16px;
