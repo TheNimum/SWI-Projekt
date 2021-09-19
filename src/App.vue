@@ -35,4 +35,7 @@ export default {
   background-color: black;
   
 }
+body {
+	background-color: black;
+}
 </style>
