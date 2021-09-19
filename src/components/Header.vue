@@ -1,7 +1,7 @@
 <template>
 <header>
 <div class="testX">
-<h2>test</h2>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/1280px-Star_Wars_Logo.svg.png">
 </div>
 
 <div class="headerBox">
@@ -9,9 +9,9 @@
 	<a class="active" href="#home">Home</a>
 	<a href="#people">People</a>
 	<a href="#films">Films</a>
-	<input id="temp-name" v-model="search" placeholder="Sök" >
-	<button class="people" v-on:click="sendRequest">People</button>
-	<button class="planet" v-on:click="sendRequest2">planet</button>
+	<input id="temp-name"  v-bind:property="search" placeholder="Sök" >
+	<button class="people" @click="sendRequest">People</button>
+	<button class="planet" @click="sendRequest2">planet</button>
 	
   </nav>
   </div>
@@ -19,11 +19,12 @@
 </template>
 
 <script>
+
 export default {
+  
   name: 'Header',
-  props:{
-    msg: String
-  }
+  data: () => ({search: ''}) 
+  
 }
 </script>
 
@@ -31,6 +32,9 @@ export default {
 <style scoped>
 .testX{
   border: dotted firebrick;
+}
+.testX img{
+  max-width: 20%;
 }
 .headerBox{
   padding: 14px 16px;
