@@ -22,14 +22,10 @@
 <script>
 
 export default ({
-<<<<<<< HEAD
-	
-=======
 	props: {
 		property: String
 	},
 
->>>>>>> 99f8d12c1e9da74207043378ec3b547ab6cd327d
 	data: () => ( {
 				
 		apiReturn: '',

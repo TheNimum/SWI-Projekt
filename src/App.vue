@@ -1,7 +1,7 @@
 <template>
 <body>
   <Header></Header>
-  <CBody></CBody>
+  <Main></Main>
   <CFooter></CFooter>
 </body>
 
@@ -9,7 +9,7 @@
 
 <script>
 import Header from './components/Header.vue'
-import CBody from './components/Main.vue'
+import Main from './components/Main.vue'
 import CFooter from './components/Footer.vue'
 
 
@@ -17,7 +17,7 @@ export default {
   name: 'App',
   components: {
     Header,
-    CBody,
+    Main,
     CFooter
   
   }
