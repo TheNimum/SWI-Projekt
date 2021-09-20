@@ -1,7 +1,7 @@
 <template>
 <body>
   <Header></Header>
-  <Main></Main>
+  <Main v-on:selectedList="selectedList"></Main>
   <CFooter></CFooter>
 </body>
 
@@ -19,8 +19,16 @@ export default {
     Header,
     Main,
     CFooter
-  
-  }
+  },
+    data: () => ({
+      listofInfo: []
+    }),
+      methods: {
+        selectedList(list) {
+            console.log('Get all films');
+            this.listofInfo = list
+        }
+    }
 }
 </script>
 

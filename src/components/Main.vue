@@ -1,5 +1,18 @@
 <template>
-
+<div>
+<div class="navBox">
+  <nav class="navbar">
+	<a class="active" href="#home">Home</a>
+	<a href="#people" @click="peopleRequest()">People</a><!--Ändra till Sant/falskt-->
+	<a href="#films" @click="sendInfo(getAllFilms)">Films</a>
+	
+	<div class="search">
+	<input id="temp-name"  v-bind:property="search" placeholder="Sök" >
+	<button class="people" @click="sendRequest">People</button>
+	<button class="planet" @click="sendRequest2">planet</button>
+	</div>
+  </nav>
+</div>
 <div class="main-Container">
 	<div>
 		<ul class="temp-list">
@@ -11,10 +24,16 @@
 		</ul>
 	</div>
 	<div class="listOfChars">
-		<ul v-for="item in getAllchar" :key="item.name" >
+		<ul>
+		<li v-for="item in getAllchar" :key="item.name" >
 		{{item.name}}
+		</li>
+		</ul>
+		<ul v-for="item in getAllFilms" :key="item.id" >
+		{{item.title}}
 		</ul>
 	</div>
+</div>
 </div>
 </template>
 
@@ -29,13 +48,17 @@ export default ({
 				
 		apiReturn: '',
 		getAllchar:[],
+		getAllFilms: [],
 		element: 0,
+		search: '',
 		pressPeople: false,
-		peopleinfo: false,	
+		peopleinfo: false,
+			
 	}),
 
 	mounted(){this.$nextTick(function(){
 		this.getRequest();
+		this.getFilms();
 	})},
 	
 	
@@ -77,13 +100,54 @@ export default ({
 			this.getAllchar = data.results;
 			console.log('Get request from api ', data)
 
+		},
+
+		async getFilms() // hämta
+		{
+			const url = `https://swapi.dev/api/films/`
+			
+			const response = await fetch(url)
+			const data = await response.json()
+			this.getAllFilms = data.results;
+			console.log('Get request from api ', data)
+		},
+		sendInfo(infoList) {
+			console.log('Emitting films to parent');
+			// emit ( namnet på funktionen, data som ska skickas )
+			this.$emit('selectedList', infoList)
 		}
 	} 
 })
 </script>
 
 <style scoped>
+.navBox{
+  margin: 0px;
+  border:dotted rgb(255, 251, 0);
+}
+.navbar a{
+	float: left;
+	display: block;
+	color: #ffe6ff;
+	text-align: center;
+	padding:1em;
+	text-decoration: none;
+	}
 
+/* Change the link color to (yellow)   on hover */
+.navbar a:hover {
+	background-image: linear-gradient(rgb(105, 95, 0), rgb(255, 238, 0));
+	color: black;
+	}
+.search {
+	padding: 1em;
+	float: right;
+}
+.navBox:after {
+    content: "";
+    display: table;
+    clear: both;
+}
 .main-Container{
 	background-color: black;
 	border: dotted rgb(129, 199, 221);
