@@ -1,9 +1,10 @@
 <template>
-<div class="headerBox">
+<div class="navBox">
   <nav class="navbar">
 	<a class="active" href="#home">Home</a>
 	<a href="#people" @click="listOfChars">People</a><!--Ändra till Sant/falskt-->
 	<a href="#films" @click="filmView">Films</a>
+	
 	<div class=search>
 	<input id="temp-name"  v-bind:property="search" placeholder="Sök" >
 	<button class="people" @click="sendRequest">People</button>
@@ -95,7 +96,7 @@ export default ({
 </script>
 
 <style scoped>
-.headerBox{
+.navBox{
   margin: 0px;
   border:dotted rgb(255, 251, 0);
 }
@@ -118,7 +119,7 @@ export default ({
 	padding: 1em;
 	float: right;
 }
-.headerBox:after {
+.navBox:after {
     content: "";
     display: table;
     clear: both;
