@@ -38,7 +38,7 @@
 
 	<div class="displayList">
 		<ul>
-		<li v-for="item in list" :key="item.title" >
+		<li v-for="item in list" :key="item.id" >
 		{{item.title}}
 		</li>
 		</ul>
@@ -61,7 +61,8 @@ export default ({
 		element: 0,
 		search: '',
 		pressPeople: false,
-		peopleinfo: false,
+		showPeople: false,
+		showFilms: false
 	}),
 
 	mounted(){
@@ -71,7 +72,7 @@ export default ({
 	
 	
 	methods: {
-		async sendRequest() { // tryck här knappen.
+		async sendRequest() { // Sök bland "people"
 			const url = `https://swapi.dev/api/people/?search=${this.search}`
 			try {
 				const response = await fetch(url)
@@ -79,7 +80,7 @@ export default ({
 				console.log('api:', data);
 				this.apiReturn = data.results[0];
 				this.pressPeople = true;
-				this.peopleinfo = true;
+				this.showPeople = true;
 			}
 			catch{
 				return null;
@@ -120,7 +121,8 @@ export default ({
 			console.log('Get request from api ', data)
 		},
 		
-		sendInfo(infoList) {
+		sendInfo(infoList) // Emmit
+		{
 			console.log('Emitting list to parent');
 			// emit ( namnet på funktionen, data som ska skickas )
 			this.$emit('selectedList', infoList)
