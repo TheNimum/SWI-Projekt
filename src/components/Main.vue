@@ -19,7 +19,7 @@
 		<ul class="temp-list">
 		<span on v-show="pressPeople">
 		name: {{apiReturn.name}}<br></span>
-		<div v-show="peopleinfo">
+		<div v-show="showPeople">
 		born: {{apiReturn.birth_year}}<br>
 		eye-color: {{apiReturn.eye_color}}<br></div>
 		</ul>
@@ -94,7 +94,7 @@ export default ({
 				console.log('api:', data);
 				this.apiReturn = data.results[0];
 				this.pressPeople = true;
-				this.peopleinfo = false;
+				this.showPeople = false;
 			}
 			catch{
 				return null;
