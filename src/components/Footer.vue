@@ -1,5 +1,5 @@
 <template>
-<div>
+<footer>
 	<h3>beskrivning</h3>
 	
 	<div class="test">
@@ -7,7 +7,7 @@
 		olika saker inom StarWars miljön. ex karaktärer eller planeter etc </p>
 	</div>
 
-</div>
+</footer>
 </template>
 
 <script>
@@ -20,7 +20,7 @@ export default ({
 </script>
 
 <style scoped>
-.test{
+footer{
 	border: dotted yellow;
 }
 </style>

@@ -1,6 +1,18 @@
 <template>
-<div class="main-Container">
+<div class="headerBox">
+  <nav class="navbar">
+	<a class="active" href="#home">Home</a>
+	<a href="#people" @click="listOfChars">People</a><!--Ändra till Sant/falskt-->
+	<a href="#films" @click="filmView">Films</a>
+	<div class=search>
+	<input id="temp-name"  v-bind:property="search" placeholder="Sök" >
+	<button class="people" @click="sendRequest">People</button>
+	<button class="planet" @click="sendRequest2">planet</button>
+	</div>
+  </nav>
+</div>
 
+<div class="main-Container">
 	<div>
 		<ul class="temp-list">
 		<span on v-show="pressPeople">
@@ -16,7 +28,6 @@
 		</ul>
 	</div>
 </div>
-
 </template>
 
 <script>
@@ -84,11 +95,37 @@ export default ({
 </script>
 
 <style scoped>
-.navbar{
-	padding: 14px 16px;
-	align-content: center;
-	margin: 0px;
-	border:dotted Darkred;
+.headerBox{
+  margin: 0px;
+  border:dotted rgb(255, 251, 0);
+}
+
+.navbar a{
+	float: left;
+	display: block;
+	color: #ffe6ff;
+	text-align: center;
+	padding:1em;
+	text-decoration: none;
+	}
+
+/* Change the link color to (yellow)   on hover */
+.navbar a:hover {
+	background-image: linear-gradient(rgb(105, 95, 0), rgb(255, 238, 0));
+	color: black;
+	}
+.search {
+	padding: 1em;
+	float: right;
+}
+.headerBox:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.main-Container{
+	background-color: black;
+	border: dotted rgb(129, 199, 221);
 }
 .listOfChars
 {
@@ -97,10 +134,7 @@ export default ({
 	margin-right: 15em;
 	margin-bottom: 10px;
 }
-.main-Container{
-	background-color: black;
-	border: dotted rgb(129, 199, 221);
-}
+
 .temp-list{
 	padding: 5px;
 	padding-left: 2em;
