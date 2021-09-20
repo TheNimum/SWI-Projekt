@@ -7,25 +7,13 @@
 	<a href="#films" @click="sendInfo(getAllFilms)">Films</a>
 	
 	<div class="search">
-	<input id="temp-name"  v-bind:property="search" placeholder="Sök" >
-	<button class="people" @click="sendRequest">People</button>
-	<button class="planet" @click="sendRequest2">planet</button>
+		<input v-model="search" placeholder="Sök">
+		<button class="people" @click="sendRequest">People</button>
+		<button class="planet" @click="sendRequest2">planet</button>
 	</div>
   </nav>
 </div>
 <div class="main-Container">
-
-	<nav class="navbar">
-	<a class="active" href="#home">Home</a>
-	<a href="#people" @click="listOfChars">People</a><!--Ändra till Sant/falskt-->
-	<a href="#films" @click="filmView">Films</a>
-	</nav>
-
-
-	<input v-model="search" placeholder="Sök">
-	<button class="people" @click="sendRequest">People</button>
-	<button class="planet" @click="sendRequest2">planet</button>
-
 	<div class="Result">
 		<ul class="temp-list">
 		<span on v-show="pressPeople">
@@ -54,7 +42,6 @@
 export default ({
 	
 	data: () => ( {
-		search: '',
 		apiReturn: '',
 		getAllchar:[],
 		getAllFilms: [],
