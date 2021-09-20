@@ -9,7 +9,7 @@
 	</nav>
 
 
-	<input id="temp-name"  v-bind:inputSearch="search" placeholder="Sök">
+	<input v-model="search" placeholder="Sök">
 	<button class="people" @click="sendRequest">People</button>
 	<button class="planet" @click="sendRequest2">planet</button>
 
@@ -34,7 +34,7 @@
 
 export default ({
 	data: () => ( {
-
+		search: '',
 		apiReturn: '',
 		getAllchar:[],
 		element: 0,
