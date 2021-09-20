@@ -1,17 +1,4 @@
 <template>
-<div class="navBox">
-  <nav class="navbar">
-	<a class="active" href="#home">Home</a>
-	<a href="#people" @click="listOfChars">People</a><!--Ändra till Sant/falskt-->
-	<a href="#films" @click="filmView">Films</a>
-	
-	<div class=search>
-	<input id="temp-name"  v-bind:property="search" placeholder="Sök" >
-	<button class="people" @click="sendRequest">People</button>
-	<button class="planet" @click="sendRequest2">planet</button>
-	</div>
-  </nav>
-</div>
 
 <div class="main-Container">
 	<div>
@@ -96,34 +83,7 @@ export default ({
 </script>
 
 <style scoped>
-.navBox{
-  margin: 0px;
-  border:dotted rgb(255, 251, 0);
-}
 
-.navbar a{
-	float: left;
-	display: block;
-	color: #ffe6ff;
-	text-align: center;
-	padding:1em;
-	text-decoration: none;
-	}
-
-/* Change the link color to (yellow)   on hover */
-.navbar a:hover {
-	background-image: linear-gradient(rgb(105, 95, 0), rgb(255, 238, 0));
-	color: black;
-	}
-.search {
-	padding: 1em;
-	float: right;
-}
-.navBox:after {
-    content: "";
-    display: table;
-    clear: both;
-}
 .main-Container{
 	background-color: black;
 	border: dotted rgb(129, 199, 221);
