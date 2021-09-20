@@ -9,11 +9,12 @@
 <script>
 
 export default {
-  
+
 	name: 'Header',
 	data: () => ({
 		search: ''
   })
+
 }
 </script>
 
@@ -25,32 +26,4 @@ export default {
 .headerLogo img{
   max-width: 20%;
 }
-.navBox{
-  margin: 0px;
-  border:dotted rgb(255, 251, 0);
-}
-.navbar a{
-	float: left;
-	display: block;
-	color: #ffe6ff;
-	text-align: center;
-	padding:1em;
-	text-decoration: none;
-	}
-
-/* Change the link color to (yellow)   on hover */
-.navbar a:hover {
-	background-image: linear-gradient(rgb(105, 95, 0), rgb(255, 238, 0));
-	color: black;
-	}
-.search {
-	padding: 1em;
-	float: right;
-}
-.navBox:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
 </style>

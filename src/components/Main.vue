@@ -14,7 +14,19 @@
   </nav>
 </div>
 <div class="main-Container">
-	<div>
+
+	<nav class="navbar">
+	<a class="active" href="#home">Home</a>
+	<a href="#people" @click="listOfChars">People</a><!--Ändra till Sant/falskt-->
+	<a href="#films" @click="filmView">Films</a>
+	</nav>
+
+
+	<input v-model="search" placeholder="Sök">
+	<button class="people" @click="sendRequest">People</button>
+	<button class="planet" @click="sendRequest2">planet</button>
+
+	<div class="Result">
 		<ul class="temp-list">
 		<span on v-show="pressPeople">
 		name: {{apiReturn.name}}<br></span>
@@ -40,12 +52,9 @@
 <script>
 
 export default ({
-	props: {
-		property: String
-	},
-
+	
 	data: () => ( {
-				
+		search: '',
 		apiReturn: '',
 		getAllchar:[],
 		getAllFilms: [],
@@ -53,25 +62,24 @@ export default ({
 		search: '',
 		pressPeople: false,
 		peopleinfo: false,
-			
 	}),
 
-	mounted(){this.$nextTick(function(){
+	mounted(){
 		this.getRequest();
 		this.getFilms();
-	})},
+	},
 	
 	
 	methods: {
 		async sendRequest() { // tryck här knappen.
 			const url = `https://swapi.dev/api/people/?search=${this.search}`
-			try {				
+			try {
 				const response = await fetch(url)
-				const data = await response.json()				
+				const data = await response.json()
 				console.log('api:', data);
 				this.apiReturn = data.results[0];
 				this.pressPeople = true;
-				this.peopleinfo = true;				
+				this.peopleinfo = true;
 			}
 			catch{
 				return null;
@@ -79,13 +87,13 @@ export default ({
 		},
 		async sendRequest2() {
 			const url = `https://swapi.dev/api/planets/?search=${this.search}`
-			try {				
+			try {
 				const response = await fetch(url)
-				const data = await response.json()				
+				const data = await response.json()
 				console.log('api:', data);
 				this.apiReturn = data.results[0];
 				this.pressPeople = true;
-				this.peopleinfo = false;					
+				this.peopleinfo = false;
 			}
 			catch{
 				return null;
@@ -94,7 +102,7 @@ export default ({
 		async getRequest() // hämta
 		{
 			const url = `https://swapi.dev/api/people/`
-			
+
 			const response = await fetch(url)
 			const data = await response.json()
 			this.getAllchar = data.results;
@@ -116,7 +124,7 @@ export default ({
 			// emit ( namnet på funktionen, data som ska skickas )
 			this.$emit('selectedList', infoList)
 		}
-	} 
+	}
 })
 </script>
 
@@ -163,7 +171,7 @@ export default ({
 .temp-list{
 	padding: 5px;
 	padding-left: 2em;
-	
+
 	border: dotted hotpink;
 	transition: 0,5s;
 	margin-left: 15em;
