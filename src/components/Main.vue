@@ -1,10 +1,10 @@
 <template>
-<div>
+<main>
 <div class="navBox">
-  <nav class="navbar">
-	<a class="active" href="#home">Home</a>
-	<a href="#people" @click="peopleRequest()">People</a><!--Ändra till Sant/falskt-->
-	<a href="#films" @click="sendInfo(getAllFilms)">Films</a>
+	<nav class="navbar">
+		<a class="active" href="#home">Home</a>
+		<a href="#people" @click="sendInfo(getAllchar)">People</a><!--Ändra till Sant/falskt-->
+		<a href="#films" @click="sendInfo(getAllFilms)">Films</a>
 	
 	<div class="search">
 		<input v-model="search" placeholder="Sök">
@@ -14,6 +14,7 @@
   </nav>
 </div>
 <div class="main-Container">
+	
 	<div class="Result">
 		<ul class="temp-list">
 		<span on v-show="pressPeople">
@@ -23,6 +24,7 @@
 		eye-color: {{apiReturn.eye_color}}<br></div>
 		</ul>
 	</div>
+	
 	<div class="listOfChars">
 		<ul>
 		<li v-for="item in getAllchar" :key="item.name" >
@@ -33,13 +35,24 @@
 		{{item.title}}
 		</ul>
 	</div>
+
+	<div class="displayList">
+		<ul>
+		<li v-for="item in list" :key="item.title" >
+		{{item.title}}
+		</li>
+		</ul>
+	</div>
+
 </div>
-</div>
+</main>
 </template>
 
 <script>
 
 export default ({
+
+	props: ['list'],
 	
 	data: () => ( {
 		apiReturn: '',
@@ -52,7 +65,7 @@ export default ({
 	}),
 
 	mounted(){
-		this.getRequest();
+		this.getPeople();
 		this.getFilms();
 	},
 	
@@ -86,7 +99,7 @@ export default ({
 				return null;
 			}
 		},
-		async getRequest() // hämta
+		async getPeople() // hämta
 		{
 			const url = `https://swapi.dev/api/people/`
 
@@ -106,8 +119,9 @@ export default ({
 			this.getAllFilms = data.results;
 			console.log('Get request from api ', data)
 		},
+		
 		sendInfo(infoList) {
-			console.log('Emitting films to parent');
+			console.log('Emitting list to parent');
 			// emit ( namnet på funktionen, data som ska skickas )
 			this.$emit('selectedList', infoList)
 		}

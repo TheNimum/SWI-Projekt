@@ -1,7 +1,9 @@
 <template>
 <body>
   <Header></Header>
-  <Main v-on:selectedList="selectedList"></Main>
+  <Main 
+  v-on:selectedList="selectedList"
+  v-bind:list="listofInfo"></Main>
   <CFooter></CFooter>
 </body>
 
@@ -25,7 +27,7 @@ export default {
     }),
       methods: {
         selectedList(list) {
-            console.log('Get all films');
+            console.log('Get list from child');
             this.listofInfo = list
         }
     }
