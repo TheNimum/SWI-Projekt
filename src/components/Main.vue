@@ -42,9 +42,9 @@ export default ({
 		peopleinfo: false,
 	}),
 
-	mounted(){this.$nextTick(function(){
+	mounted(){
 		this.getRequest();
-	})},
+	},
 
 
 	methods: {
