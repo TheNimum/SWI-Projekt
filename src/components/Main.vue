@@ -1,18 +1,6 @@
 <template>
 <main>
-<!--<div class="navBox">
-	<nav class="navbar">
-		<a class="active" href="#home" @click="sendInfo()">Home</a>
-		<a href="#people" @click="sendInfo(getAllchar)">People</a>
-		<a href="#films" @click="sendInfo(getAllFilms)">Films</a>
 	
-	<div class="search">
-		<input v-model="search" placeholder="Sök">
-		<button class="people" @click="sendRequest">People</button>
-		<button class="planet" @click="sendRequest2">planet</button>
-	</div>
-  </nav>
-</div>-->
 <div class="main-Container">
 	
 	<div class="Result">
@@ -45,8 +33,8 @@ export default ({
 	
 	data: () => ( {
 		apiReturn: '',
-		getAllchar:[],
-		getAllFilms: [],
+		//getAllchar:[],
+		//getAllFilms: [],
 		element: 0,
 		search: '',
 		pressPeople: false,
@@ -55,12 +43,6 @@ export default ({
 		Home: false,
 
 	}),
-	
-
-	mounted(){
-		this.getPeople();
-		this.getFilms();
-	},
 	
 	
 	methods: {
@@ -93,65 +75,19 @@ export default ({
 				return null;
 			}
 		},
-		async getPeople() // hämta
-		{
-			const url = `https://swapi.dev/api/people/`
-
-			const response = await fetch(url)
-			const data = await response.json()
-			this.getAllchar = data.results;
-			console.log('Get request People from api ', data)
-
-		},
-
-		async getFilms() // hämta
-		{
-			const url = `https://swapi.dev/api/films/`
-			
-			const response = await fetch(url)
-			const data = await response.json()
-			this.getAllFilms = data.results;			
-			console.log('Get request Films from api ', data)
-		},
 		
-		sendInfo(infoList) // Emmit
+		/*sendInfo(infoList) // Emmit
 		{
 			console.log('Emitting list to parent');
 			// emit ( namnet på funktionen, data som ska skickas )
 			this.$emit('selectedList', infoList)
-		}
+		}*/
 	}
 })
 </script>
 
 <style scoped>
-.navBox{
-  margin: 0px;
-  border:dotted rgb(255, 251, 0);
-}
-.navbar a{
-	float: left;
-	display: block;
-	color: #ffe6ff;
-	text-align: center;
-	padding:1em;
-	text-decoration: none;
-	}
 
-/* Change the link color to (yellow)   on hover */
-.navbar a:hover {
-	background-image: linear-gradient(rgb(105, 95, 0), rgb(255, 238, 0));
-	color: black;
-	}
-.search {
-	padding: 1em;
-	float: right;
-}
-.navBox:after {
-    content: "";
-    display: table;
-    clear: both;
-}
 .main-Container{
 	background-color: black;
 	border: dotted rgb(129, 199, 221);

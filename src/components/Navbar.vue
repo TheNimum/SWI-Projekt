@@ -1,9 +1,9 @@
 <template>
     <div class="navBox">
 	<nav class="navbar">
-		<a class="active" href="#home" @click="sendInfo()">Home</a>
-		<a href="#people" @click="sendInfo(getAllchar)">People</a><!--Ändra till Sant/falskt-->
-		<a href="#films" @click="sendInfo(getAllFilms)">Films</a>
+		<a class="active" href="#home" @click="SendRequestToApp('home')">Home</a>
+		<a href="#people" @click="SendRequestToApp('people')">People</a><!--Ändra till Sant/falskt-->
+		<a href="#films" @click="SendRequestToApp('films')">Films</a>
 	
 	<div class="search">
 		<input v-model="search" placeholder="Sök">
@@ -16,10 +16,36 @@
 
 <script>
 export default {
-    
+    data: () => ({
+        requestPeople:'people',
+        requestFilms: 'films',
+        requestHome: 'home'
+    }),
+
+    methods: {
+    SendRequestToApp(request){
+    switch(request){
+        case 'people':
+        console.log('Emitting people request to parent');
+		// emit ( namnet på funktionen, data som ska skickas )
+		this.$emit('selectedList', this.requestPeople)
+        break;
+        case 'films':
+        console.log('Emitting films request to parent');
+		// emit ( namnet på funktionen, data som ska skickas )
+		this.$emit('selectedList', this.requestFilms)
+		break;
+		case 'home':
+			console.log('Emitting home request to parent');
+			// emit ( namnet på funktionen, data som ska skickas )
+			this.$emit('selectedList', this.requestFilms)
+			}
+		}
+    }   
 }
 </script>
 <style scoped>
+
 .navBox{
   margin: 0px;
   border:dotted rgb(255, 251, 0);
