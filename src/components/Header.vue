@@ -1,8 +1,9 @@
 <template>
 <header>
-<div class="testX">
+<div class="headerLogo">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/1280px-Star_Wars_Logo.svg.png">
 </div>
+<<<<<<< HEAD
 
 <div class="headerBox">
   <nav class="navbar">
@@ -15,6 +16,8 @@
 	
   </nav>
   </div>
+=======
+>>>>>>> 18c6a1dfc485dd3c071026a4ffabbc147505c9e3
 </header>
 </template>
 
@@ -22,45 +25,21 @@
 
 
 export default {
-  
-  name: 'Header',
-  data: () => ({search: ''}) 
-  
+
+	name: 'Header',
+	data: () => ({
+		search: ''
+  })
+
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.testX{
+.headerLogo{
   border: dotted firebrick;
 }
-.testX img{
+.headerLogo img{
   max-width: 20%;
-}
-.headerBox{
-  padding: 14px 16px;
-  align-content: center;
-  margin: 0px;
-  border:dotted Darkred;
-}
-
-.navbar a{
-  float: left;
-	display: block;
-	color: #ffe6ff;
-	text-align: center;
-	padding-left:1em;
-	text-decoration: none;
-	}
-
-/* Change the link color to (rgb(0, 134, 22) (green)   on hover */
-.navbar a:hover {
-	background-image: linear-gradient(rgb(134, 120, 0), rgb(255, 238, 0));
-	color: black;
-	}
-  .main:after {
-    content: "";
-    display: table;
-    clear: both;
 }
 </style>

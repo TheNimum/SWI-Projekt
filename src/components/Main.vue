@@ -1,54 +1,91 @@
 <template>
+<main>
+<div class="navBox">
+	<nav class="navbar">
+		<a class="active" href="#home">Home</a>
+		<a href="#people" @click="sendInfo(getAllchar)">People</a><!--Ändra till Sant/falskt-->
+		<a href="#films" @click="sendInfo(getAllFilms)">Films</a>
+	
+	<div class="search">
+		<input v-model="search" placeholder="Sök">
+		<button class="people" @click="sendRequest">People</button>
+		<button class="planet" @click="sendRequest2">planet</button>
+	</div>
+  </nav>
+</div>
 <div class="main-Container">
-
-	<div>
+	
+	<div class="Result">
 		<ul class="temp-list">
 		<span on v-show="pressPeople">
 		name: {{apiReturn.name}}<br></span>
-		<div v-show="peopleinfo">
+		<div v-show="showPeople">
 		born: {{apiReturn.birth_year}}<br>
 		eye-color: {{apiReturn.eye_color}}<br></div>
 		</ul>
 	</div>
+	
 	<div class="listOfChars">
-		<ul v-for="item in getAllchar" :key="item.name" >
+		<ul>
+		<li v-for="item in getAllchar" :key="item.name" >
 		{{item.name}}
+		</li>
+		</ul>
+		<ul v-for="item in getAllFilms" :key="item.id" >
+		{{item.title}}
 		</ul>
 	</div>
-</div>
 
+	<div class="displayList">
+		<ul>
+		<li v-for="item in list" :key="item.id" >
+		{{item.title}}
+		</li>
+		</ul>
+	</div>
+
+</div>
+</main>
 </template>
 
 <script>
 	
 
 export default ({
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 18c6a1dfc485dd3c071026a4ffabbc147505c9e3
 
+	props: ['list'],
+	
 	data: () => ( {
-				
 		apiReturn: '',
 		getAllchar:[],
+		getAllFilms: [],
 		element: 0,
+		search: '',
 		pressPeople: false,
-		peopleinfo: false,	
+		showPeople: false,
+		showFilms: false
 	}),
 
-	mounted(){this.$nextTick(function(){
-		this.getRequest();
-	})},
+	mounted(){
+		this.getPeople();
+		this.getFilms();
+	},
 	
 	
 	methods: {
-		async sendRequest() { // tryck här knappen.
+		async sendRequest() { // Sök bland "people"
 			const url = `https://swapi.dev/api/people/?search=${this.search}`
-			try {				
+			try {
 				const response = await fetch(url)
-				const data = await response.json()				
+				const data = await response.json()
 				console.log('api:', data);
 				this.apiReturn = data.results[0];
 				this.pressPeople = true;
-				this.peopleinfo = true;				
+				this.showPeople = true;
 			}
 			catch{
 				return null;
@@ -56,38 +93,80 @@ export default ({
 		},
 		async sendRequest2() {
 			const url = `https://swapi.dev/api/planets/?search=${this.search}`
-			try {				
+			try {
 				const response = await fetch(url)
-				const data = await response.json()				
+				const data = await response.json()
 				console.log('api:', data);
 				this.apiReturn = data.results[0];
 				this.pressPeople = true;
-				this.peopleinfo = false;					
+				this.showPeople = false;
 			}
 			catch{
 				return null;
 			}
 		},
-		async getRequest() // hämta
+		async getPeople() // hämta
 		{
 			const url = `https://swapi.dev/api/people/`
-			
+
 			const response = await fetch(url)
 			const data = await response.json()
 			this.getAllchar = data.results;
 			console.log('Get request from api ', data)
 
+		},
+
+		async getFilms() // hämta
+		{
+			const url = `https://swapi.dev/api/films/`
+			
+			const response = await fetch(url)
+			const data = await response.json()
+			this.getAllFilms = data.results;
+			console.log('Get request from api ', data)
+		},
+		
+		sendInfo(infoList) // Emmit
+		{
+			console.log('Emitting list to parent');
+			// emit ( namnet på funktionen, data som ska skickas )
+			this.$emit('selectedList', infoList)
 		}
-	} 
+	}
 })
 </script>
 
 <style scoped>
-.navbar{
-	padding: 14px 16px;
-	align-content: center;
-	margin: 0px;
-	border:dotted Darkred;
+.navBox{
+  margin: 0px;
+  border:dotted rgb(255, 251, 0);
+}
+.navbar a{
+	float: left;
+	display: block;
+	color: #ffe6ff;
+	text-align: center;
+	padding:1em;
+	text-decoration: none;
+	}
+
+/* Change the link color to (yellow)   on hover */
+.navbar a:hover {
+	background-image: linear-gradient(rgb(105, 95, 0), rgb(255, 238, 0));
+	color: black;
+	}
+.search {
+	padding: 1em;
+	float: right;
+}
+.navBox:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.main-Container{
+	background-color: black;
+	border: dotted rgb(129, 199, 221);
 }
 .listOfChars
 {
@@ -96,14 +175,11 @@ export default ({
 	margin-right: 15em;
 	margin-bottom: 10px;
 }
-.main-Container{
-	background-color: black;
-	border: dotted rgb(129, 199, 221);
-}
+
 .temp-list{
 	padding: 5px;
 	padding-left: 2em;
-	
+
 	border: dotted hotpink;
 	transition: 0,5s;
 	margin-left: 15em;
