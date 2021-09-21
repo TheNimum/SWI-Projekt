@@ -1,25 +1,25 @@
 <template>
 <body>
   <Header></Header>
-  <CBody></CBody>
-  <CFooter></CFooter>
+  <Main></Main>
+  <Footer></Footer>
 </body>
 
 </template>
 
 <script>
 import Header from './components/Header.vue'
-import CBody from './components/Main.vue'
-import CFooter from './components/Footer.vue'
+import Footer from './components/Footer.vue'
+import Main from './components/Main.vue'
 
 
 export default {
   name: 'App',
   components: {
     Header,
-    CBody,
-    CFooter
-  
+    Main,
+    Footer,
+
   }
 }
 </script>

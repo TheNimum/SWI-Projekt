@@ -9,16 +9,17 @@
 	<a class="active" href="#home">Home</a>
 	<a href="#people">People</a>
 	<a href="#films">Films</a>
-	<input id="temp-name"  v-bind:property="search" placeholder="Sök" >
-	<button class="people" @click="sendRequest">People</button>
-	<button class="planet" @click="sendRequest2">planet</button>
+	<input id="temp-name"  v-bind:search="search" placeholder="Sök" >
+	<button class="people" @click="sendRequest(search)">People</button>
+	<button class="planet" @click="sendRequest2(search)">planet</button>
 	
   </nav>
   </div>
 </header>
 </template>
 
-<script>
+<script>          
+
 
 export default {
   
