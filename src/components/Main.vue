@@ -24,23 +24,13 @@
 		eye-color: {{apiReturn.eye_color}}<br></div>
 		</ul>
 	</div>
-	
-	<div class="listOfChars">
-		<ul>
-		<li v-for="item in getAllchar" :key="item.name" >
-		{{item.name}}
-		</li>
-		</ul>
-		<ul v-for="item in getAllFilms" :key="item.id" >
-		{{item.title}}
-		</ul>
-	</div>
 
 	<div class="displayList">
 		<ul>
-		<li v-for="item in list" :key="item.id" >
-		{{item.title}}
-		</li>
+			<li v-for="item in list" :key="item.id" >
+				{{item.title}}
+				{{item.name}}
+			</li>
 		</ul>
 	</div>
 
@@ -49,7 +39,6 @@
 </template>
 
 <script>
-
 export default ({
 
 	props: ['list'],
