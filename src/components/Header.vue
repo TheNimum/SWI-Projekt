@@ -6,7 +6,8 @@
 </header>
 </template>
 
-<script>
+<script>          
+
 
 export default {
 

@@ -2,7 +2,7 @@
 <main>
 <div class="navBox">
 	<nav class="navbar">
-		<a class="active" href="#home">Home</a>
+		<a class="active" href="#home" @click="sendInfo(displayList)">Home</a>
 		<a href="#people" @click="sendInfo(getAllchar)">People</a><!--Ändra till Sant/falskt-->
 		<a href="#films" @click="sendInfo(getAllFilms)">Films</a>
 	
@@ -51,8 +51,11 @@ export default ({
 		search: '',
 		pressPeople: false,
 		showPeople: false,
-		showFilms: false
+		showFilms: false,
+		Home: false,
+
 	}),
+	
 
 	mounted(){
 		this.getPeople();
@@ -61,6 +64,7 @@ export default ({
 	
 	
 	methods: {
+		
 		async sendRequest() { // Sök bland "people"
 			const url = `https://swapi.dev/api/people/?search=${this.search}`
 			try {
@@ -96,7 +100,7 @@ export default ({
 			const response = await fetch(url)
 			const data = await response.json()
 			this.getAllchar = data.results;
-			console.log('Get request from api ', data)
+			console.log('Get request People from api ', data)
 
 		},
 
@@ -106,8 +110,8 @@ export default ({
 			
 			const response = await fetch(url)
 			const data = await response.json()
-			this.getAllFilms = data.results;
-			console.log('Get request from api ', data)
+			this.getAllFilms = data.results;			
+			console.log('Get request Films from api ', data)
 		},
 		
 		sendInfo(infoList) // Emmit

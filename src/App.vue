@@ -4,15 +4,15 @@
   <Main 
   v-on:selectedList="selectedList"
   v-bind:list="listofInfo"></Main>
-  <CFooter></CFooter>
+  <Footer></Footer>
 </body>
 
 </template>
 
 <script>
-import Header from './components/Header.vue'
-import Main from './components/Main.vue'
-import CFooter from './components/Footer.vue'
+import Header from './components/Header'
+import Main from './components/Main'
+import Footer from './components/Footer'
 
 
 export default {
@@ -20,7 +20,7 @@ export default {
   components: {
     Header,
     Main,
-    CFooter
+    Footer
   },
     data: () => ({
       listofInfo: []
@@ -30,7 +30,7 @@ export default {
             console.log('Get list from child');
             this.listofInfo = list
         }
-    }
+    },
 }
 </script>
 
