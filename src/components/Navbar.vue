@@ -1,0 +1,50 @@
+<template>
+    <div class="navBox">
+	<nav class="navbar">
+		<a class="active" href="#home" @click="sendInfo()">Home</a>
+		<a href="#people" @click="sendInfo(getAllchar)">People</a><!--Ändra till Sant/falskt-->
+		<a href="#films" @click="sendInfo(getAllFilms)">Films</a>
+	
+	<div class="search">
+		<input v-model="search" placeholder="Sök">
+		<button class="people" @click="sendRequest">People</button>
+		<button class="planet" @click="sendRequest2">planet</button>
+	</div>
+  </nav>
+</div>
+</template>
+
+<script>
+export default {
+    
+}
+</script>
+<style scoped>
+.navBox{
+  margin: 0px;
+  border:dotted rgb(255, 251, 0);
+}
+.navbar a{
+	float: left;
+	display: block;
+	color: #ffe6ff;
+	text-align: center;
+	padding:1em;
+	text-decoration: none;
+	}
+
+/* Change the link color to (yellow)   on hover */
+.navbar a:hover {
+	background-image: linear-gradient(rgb(105, 95, 0), rgb(255, 238, 0));
+	color: black;
+	}
+.search {
+	padding: 1em;
+	float: right;
+}
+.navBox:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+</style>

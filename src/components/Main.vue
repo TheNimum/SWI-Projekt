@@ -1,9 +1,9 @@
 <template>
 <main>
-<div class="navBox">
+<!--<div class="navBox">
 	<nav class="navbar">
-		<a class="active" href="#home" @click="sendInfo(displayList)">Home</a>
-		<a href="#people" @click="sendInfo(getAllchar)">People</a><!--Ändra till Sant/falskt-->
+		<a class="active" href="#home" @click="sendInfo()">Home</a>
+		<a href="#people" @click="sendInfo(getAllchar)">People</a>
 		<a href="#films" @click="sendInfo(getAllFilms)">Films</a>
 	
 	<div class="search">
@@ -12,7 +12,7 @@
 		<button class="planet" @click="sendRequest2">planet</button>
 	</div>
   </nav>
-</div>
+</div>-->
 <div class="main-Container">
 	
 	<div class="Result">

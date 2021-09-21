@@ -1,9 +1,11 @@
 <template>
 <body>
   <Header></Header>
+  <Navbar></Navbar>
   <Main 
   v-on:selectedList="selectedList"
-  v-bind:list="listofInfo"></Main>
+  v-bind:list="listofInfo">
+  </Main>
   <Footer></Footer>
 </body>
 
@@ -13,14 +15,15 @@
 import Header from './components/Header'
 import Main from './components/Main'
 import Footer from './components/Footer'
-
+import Navbar from './components/Navbar'
 
 export default {
   name: 'App',
   components: {
     Header,
     Main,
-    Footer
+    Footer,
+    Navbar
   },
     data: () => ({
       listofInfo: []
@@ -48,4 +51,5 @@ export default {
 body {
 	background-color: black;
 }
+
 </style>
