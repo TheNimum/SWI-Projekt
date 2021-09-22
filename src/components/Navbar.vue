@@ -23,15 +23,15 @@ export default {
 
     methods: {
 		SendRequestToApp(request){
-			console.log('Emitting people request to parent');
+			console.log('Emitting  listrequest to parent');
 			// emit ( namnet på funktionen, data som ska skickas )
 			this.$emit('SelectedList', request)
 		},
 
-		SendSearchRequest(keyword)
+		SendSearchRequest()
 		{
 			console.log('Emitting search request to parent');
-			this.$emit('', keyword)
+			this.$emit('FilterData', this.search)
 		}
     }   
 }
