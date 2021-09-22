@@ -17,29 +17,14 @@
 <script>
 export default {
     data: () => ({
-        requestPeople:'people',
-        requestFilms: 'films',
-        requestHome: 'home'
+        request:''
     }),
 
     methods: {
-    SendRequestToApp(request){
-    switch(request){
-        case 'people':
-        console.log('Emitting people request to parent');
-		// emit ( namnet på funktionen, data som ska skickas )
-		this.$emit('selectedList', this.requestPeople)
-        break;
-        case 'films':
-        console.log('Emitting films request to parent');
-		// emit ( namnet på funktionen, data som ska skickas )
-		this.$emit('selectedList', this.requestFilms)
-		break;
-		case 'home':
-			console.log('Emitting home request to parent');
+		SendRequestToApp(request){
+			console.log('Emitting people request to parent');
 			// emit ( namnet på funktionen, data som ska skickas )
-			this.$emit('selectedList', this.requestFilms)
-			}
+			this.$emit('selectedList', request)
 		}
     }   
 }
