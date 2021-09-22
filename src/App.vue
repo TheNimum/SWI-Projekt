@@ -1,9 +1,11 @@
 <template>
 <body>
   <Header></Header>
-  <Navbar v-on:SelectedList="SelectedList"></Navbar>
+  <Navbar
+    v-on:SelectedList="SelectedList"
+    v-on:FilterData="FilterData"></Navbar>
   <Main 
-  v-bind:list="listofInfo">
+  v-bind:list="listToSend">
   </Main>
   <Footer></Footer>
 </body>
@@ -11,6 +13,7 @@
 </template>
 
 <script>
+/*import {ref} from "vue"*/
 import Header from './components/Header'
 import Main from './components/Main'
 import Footer from './components/Footer'
@@ -25,33 +28,50 @@ export default {
     Footer,
     Navbar
   },
-    data: () => ({
-      dataLength: 0,
-    listofInfo:[],
+  /*setup() {
+    const search = ref("");
+    return { search };
+  },*/
+  data: () => ({
+    searchInput: '',
+    listToSend:[],
     getAllchar:[],
 		getAllFilms:[],
     listofAllData: []
-    }),  
-    methods: {
+    }),
+    
+  /*computed: {
+    FilterData() {
+      const search = this.searchClient.toLowerCase().trim();
+      
+      if (!search) return this.clients;
+      
+      return this.clients.filter(c => c.name.toLowerCase().indexOf(search) > -1);
+      }
+  },*/
+  methods: {
     
     SelectedList(request) {
       console.log('Get list from child');
       switch (request){
         case 'people':
-          this.listofInfo=this.getAllchar
+          this.listToSend=this.getAllchar
           break;
         case 'films':
-          this.listofInfo=this.getAllFilms
+          this.listToSend=this.getAllFilms
           break;
         case 'home':
+          this.MergeLists();
+          this.listToSend=this.listofAllData
           break;
       }
     },
 
-    FilterData(keyword)
+    /*FilterData(keyword)
     {
-      
-    },
+      console.log(keyword)
+
+    },*/
 
     async GetPeople() // hämta
 		{
@@ -59,17 +79,23 @@ export default {
 			const response = await fetch(url)
 			const data = await response.json()
 			this.getAllchar = data.results;
-			console.log('Get request People from api ', data)
-		},
-
-		async GetFilms() // hämta
-		{
+      console.log('Get request People from api ', data)
+    },
+    
+    async GetFilms() // hämta
+    {
 			const url = `https://swapi.dev/api/films/`
 			const response = await fetch(url)
 			const data = await response.json()
 			this.getAllFilms = data.results;			
 			console.log('Get request Films from api ', data)
 		},
+
+    MergeLists()
+    {
+      console.log('Merge lists')
+      this.listofAllData= this.getAllchar.concat(this.getAllFilms);
+    }
 
   },
     mounted(){
@@ -86,12 +112,15 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #fbff00;
-  
-  background-color: black;
-  
 }
+html { 
+  background: url(https://images.wallpaperscraft.com/image/single/stars_space_sky_glitter_116409_3840x2400.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  }
 body {
-	background-color: black;
+  margin: 5em;
 }
-
 </style>

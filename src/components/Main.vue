@@ -1,8 +1,7 @@
 <template>
-<main>
-	
-<div class="main-Container">
-	
+
+
+<div class="main-Container">	
 	<div class="Result">
 		<ul class="temp-list">
 		<span on v-show="pressPeople">
@@ -21,9 +20,8 @@
 			</li>
 		</ul>
 	</div>
-
 </div>
-</main>
+
 </template>
 
 <script>
@@ -33,7 +31,6 @@ export default ({
 	
 	data: () => ( {
 		apiReturn: '',
-		element: 0,
 		pressPeople: false,
 		showPeople: false,
 		showFilms: false,
@@ -88,8 +85,11 @@ export default ({
 .main-Container{
 	background-color: black;
 	border: dotted rgb(129, 199, 221);
+	margin:0;
+	overflow-x:hidden;
+
 }
-.listOfChars
+.displayList
 {
 	border: dotted darkorange;
 	margin-left: 15em;

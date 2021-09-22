@@ -8,7 +8,7 @@
 	<div class="search">
 		<input v-model="search" placeholder="Sök">
 		<button class="people" @click="SendSearchRequest">People</button>
-		<button class="film" @click="SendSearchRequest">planet</button>
+		<button class="film" @click="SendSearchRequest">Film</button>
 	</div>
   </nav>
 </div>
@@ -39,12 +39,13 @@ export default {
 <style scoped>
 
 .navBox{
-  margin: 0px;
+  margin: 0;
   border:dotted rgb(255, 251, 0);
+  background-color: black;
 }
 .navbar a{
 	float: left;
-	display: block;
+	display: flex;
 	color: #ffe6ff;
 	text-align: center;
 	padding:1em;

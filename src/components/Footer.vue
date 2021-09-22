@@ -22,5 +22,7 @@ export default ({
 <style scoped>
 footer{
 	border: dotted yellow;
+	background-color: black;
+	margin:0;
 }
 </style>
