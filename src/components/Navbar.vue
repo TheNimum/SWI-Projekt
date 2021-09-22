@@ -7,8 +7,8 @@
 	
 	<div class="search">
 		<input v-model="search" placeholder="Sök">
-		<button class="people" @click="sendRequest">People</button>
-		<button class="planet" @click="sendRequest2">planet</button>
+		<button class="people" @click="SendSearchRequest">People</button>
+		<button class="film" @click="SendSearchRequest">planet</button>
 	</div>
   </nav>
 </div>
@@ -17,14 +17,21 @@
 <script>
 export default {
     data: () => ({
-        request:''
+        request:'',
+		search:''
     }),
 
     methods: {
 		SendRequestToApp(request){
 			console.log('Emitting people request to parent');
 			// emit ( namnet på funktionen, data som ska skickas )
-			this.$emit('selectedList', request)
+			this.$emit('SelectedList', request)
+		},
+
+		SendSearchRequest(keyword)
+		{
+			console.log('Emitting search request to parent');
+			this.$emit('', keyword)
 		}
     }   
 }

@@ -1,7 +1,7 @@
 <template>
 <body>
   <Header></Header>
-  <Navbar v-on:selectedList="selectedList"></Navbar>
+  <Navbar v-on:SelectedList="SelectedList"></Navbar>
   <Main 
   v-bind:list="listofInfo">
   </Main>
@@ -26,13 +26,15 @@ export default {
     Navbar
   },
     data: () => ({
+      dataLength: 0,
     listofInfo:[],
     getAllchar:[],
-		getAllFilms:[]
+		getAllFilms:[],
+    listofAllData: []
     }),  
     methods: {
     
-    selectedList(request) {
+    SelectedList(request) {
       console.log('Get list from child');
       switch (request){
         case 'people':
@@ -46,7 +48,12 @@ export default {
       }
     },
 
-    async getPeople() // hämta
+    FilterData(keyword)
+    {
+      
+    },
+
+    async GetPeople() // hämta
 		{
 			const url = `https://swapi.dev/api/people/`
 			const response = await fetch(url)
@@ -55,18 +62,19 @@ export default {
 			console.log('Get request People from api ', data)
 		},
 
-		async getFilms() // hämta
+		async GetFilms() // hämta
 		{
 			const url = `https://swapi.dev/api/films/`
 			const response = await fetch(url)
 			const data = await response.json()
 			this.getAllFilms = data.results;			
 			console.log('Get request Films from api ', data)
-		}
+		},
+
   },
     mounted(){
-		this.getPeople();
-		this.getFilms();
+		this.GetPeople();
+		this.GetFilms();
     }
 }
 </script>

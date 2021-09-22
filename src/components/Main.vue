@@ -33,10 +33,7 @@ export default ({
 	
 	data: () => ( {
 		apiReturn: '',
-		//getAllchar:[],
-		//getAllFilms: [],
 		element: 0,
-		search: '',
 		pressPeople: false,
 		showPeople: false,
 		showFilms: false,
