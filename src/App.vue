@@ -1,19 +1,20 @@
 <template>
-<body>
+Parent: {{name}}
+
   <Header></Header>
   <Navbar
     v-on:SelectedList="SelectedList"
-    v-on:FilterData="FilterData"></Navbar>
+    v-model="name">
+  </Navbar>
   <Main 
   v-bind:list="listToSend">
   </Main>
   <Footer></Footer>
-</body>
-
+<!--Byt ut bodytaggar-->
 </template>
 
 <script>
-/*import {ref} from "vue"*/
+import {ref} from "vue"
 import Header from './components/Header'
 import Main from './components/Main'
 import Footer from './components/Footer'
@@ -28,27 +29,23 @@ export default {
     Footer,
     Navbar
   },
-  /*setup() {
-    const search = ref("");
-    return { search };
-  },*/
+  setup() {
+    const name = ref("");
+    return { name };
+	},
+
   data: () => ({
-    searchInput: '',
     listToSend:[],
     getAllchar:[],
 		getAllFilms:[],
-    listofAllData: []
+    listofAllData:[]
     }),
-    
-  /*computed: {
-    FilterData() {
-      const search = this.searchClient.toLowerCase().trim();
-      
-      if (!search) return this.clients;
-      
-      return this.clients.filter(c => c.name.toLowerCase().indexOf(search) > -1);
+
+  computed: {
+    filteredList: function() {
+      return this.listToSend.filter()
       }
-  },*/
+  },
   methods: {
     
     SelectedList(request) {
@@ -66,10 +63,8 @@ export default {
           break;
       }
     },
-
-    /*FilterData(keyword)
-    {
-      console.log(keyword)
+    
+    /*FilterData(input) {
 
     },*/
 
@@ -79,6 +74,7 @@ export default {
 			const response = await fetch(url)
 			const data = await response.json()
 			this.getAllchar = data.results;
+      this.listToSend=this.getAllchar
       console.log('Get request People from api ', data)
     },
     
