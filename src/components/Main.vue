@@ -14,7 +14,7 @@
 
 	<div class="displayList">
 		<ul>
-			<li v-for="item in list" :key="item.id" >
+			<li v-for="item in filteredList" :key="item.id" >
 				{{item.title}}
 				{{item.name}}
 			</li>
@@ -27,7 +27,10 @@
 <script>
 export default ({
 
-	props: ['list'],
+	props: {
+		list: Array,
+		searchInput: String
+	},/*['list', 'searchInput'],*/
 	
 	data: () => ( {
 		apiReturn: '',
@@ -35,47 +38,20 @@ export default ({
 		showPeople: false,
 		showFilms: false,
 		Home: false,
+		/*filteredList:[]*/
 
 	}),
-	
+	computed: {
+		filteredList: function() {
+			return this.list.filter((item)=>{
+				return item.name.toLowerCase().includes(this.searchInput.toLowerCase())
+			});
+		}
+	},
 	
 	methods: {
-		
-		async sendRequest() { // Sök bland "people"
-			const url = `https://swapi.dev/api/people/?search=${this.search}`
-			try {
-				const response = await fetch(url)
-				const data = await response.json()
-				console.log('api:', data);
-				this.apiReturn = data.results[0];
-				this.pressPeople = true;
-				this.showPeople = true;
-			}
-			catch{
-				return null;
-			}
-		},
-		async sendRequest2() {
-			const url = `https://swapi.dev/api/planets/?search=${this.search}`
-			try {
-				const response = await fetch(url)
-				const data = await response.json()
-				console.log('api:', data);
-				this.apiReturn = data.results[0];
-				this.pressPeople = true;
-				this.showPeople = false;
-			}
-			catch{
-				return null;
-			}
-		},
-		
-		/*sendInfo(infoList) // Emmit
-		{
-			console.log('Emitting list to parent');
-			// emit ( namnet på funktionen, data som ska skickas )
-			this.$emit('selectedList', infoList)
-		}*/
+
+
 	}
 })
 </script>

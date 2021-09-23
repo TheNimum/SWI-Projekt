@@ -7,7 +7,8 @@ Parent: {{name}}
     v-model="name">
   </Navbar>
   <Main 
-  v-bind:list="listToSend">
+  v-bind:list="listToSend"
+  v-bind:searchInput="name">
   </Main>
   <Footer></Footer>
 <!--Byt ut bodytaggar-->
@@ -41,11 +42,6 @@ export default {
     listofAllData:[]
     }),
 
-  computed: {
-    filteredList: function() {
-      return this.listToSend.filter()
-      }
-  },
   methods: {
     
     SelectedList(request) {
@@ -63,10 +59,6 @@ export default {
           break;
       }
     },
-    
-    /*FilterData(input) {
-
-    },*/
 
     async GetPeople() // hämta
 		{
@@ -117,6 +109,6 @@ html {
   background-size: cover;
   }
 body {
-  margin: 5em;
+  margin: 3em;
 }
 </style>
