@@ -1,15 +1,16 @@
 <template>
-Parent: {{name}}
+<div>
 
   <Header></Header>
   <Navbar
     v-on:SelectedList="SelectedList"
     v-model="name">
   </Navbar>
-  <Main 
+  <Main
   v-bind:list="listToSend">
   </Main>
   <Footer></Footer>
+  </div>
 <!--Byt ut bodytaggar-->
 </template>
 
@@ -22,7 +23,7 @@ import Navbar from './components/Navbar'
 
 export default {
   name: 'App',
-  
+
   components: {
     Header,
     Main,
@@ -47,7 +48,7 @@ export default {
       }
   },
   methods: {
-    
+
     SelectedList(request) {
       console.log('Get list from child');
       switch (request){
@@ -63,7 +64,7 @@ export default {
           break;
       }
     },
-    
+
     /*FilterData(input) {
 
     },*/
@@ -77,13 +78,13 @@ export default {
       this.listToSend=this.getAllchar
       console.log('Get request People from api ', data)
     },
-    
+
     async GetFilms() // hämta
     {
 			const url = `https://swapi.dev/api/films/`
 			const response = await fetch(url)
 			const data = await response.json()
-			this.getAllFilms = data.results;			
+			this.getAllFilms = data.results;
 			console.log('Get request Films from api ', data)
 		},
 
@@ -109,14 +110,13 @@ export default {
   text-align: center;
   color: #fbff00;
 }
-html { 
-  background: url(https://images.wallpaperscraft.com/image/single/stars_space_sky_glitter_116409_3840x2400.jpg) no-repeat center center fixed; 
+html {
+  background: url(https://images.wallpaperscraft.com/image/single/stars_space_sky_glitter_116409_3840x2400.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   }
-body {
-  margin: 5em;
-}
+  body{margin: 3.5em;}
+
 </style>
