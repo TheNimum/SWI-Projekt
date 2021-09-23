@@ -1,7 +1,7 @@
 <template>
 
 
-<div class="main-Container">	
+<div class="main-Container">
 	<div class="Result">
 		<ul class="temp-list">
 		<span on v-show="pressPeople">
@@ -28,7 +28,7 @@
 export default ({
 
 	props: ['list'],
-	
+
 	data: () => ( {
 		apiReturn: '',
 		pressPeople: false,
@@ -37,10 +37,10 @@ export default ({
 		Home: false,
 
 	}),
-	
-	
+
+
 	methods: {
-		
+
 		async sendRequest() { // Sök bland "people"
 			const url = `https://swapi.dev/api/people/?search=${this.search}`
 			try {
@@ -69,7 +69,7 @@ export default ({
 				return null;
 			}
 		},
-		
+
 		/*sendInfo(infoList) // Emmit
 		{
 			console.log('Emitting list to parent');
