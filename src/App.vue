@@ -88,6 +88,7 @@ export default {
 
   },
     mounted(){
+    this.MergeLists();
 		this.GetPeople();
 		this.GetFilms();
     }
