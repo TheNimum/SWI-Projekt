@@ -6,7 +6,7 @@
 		<a href="#films" @click="SendRequestToApp('films')">Films</a>
 	
 	<div class="searchbar">
-		<input type="text" placeholder="Name" v-model="name" @input="$emit('update:modelValue', $event.target.value)"/>
+		<input type="text" placeholder="Search..." v-model="filterText" @input="$emit('update:modelValue', $event.target.value)"/>
 	</div>
   </nav>
 </div>
@@ -55,6 +55,11 @@ export default {
 	background-image: linear-gradient(rgb(105, 95, 0), rgb(255, 238, 0));
 	color: black;
 	}
+/* Style the "active" element to highlight the current page */
+/*.navbar a.active {
+  background-image: linear-gradient(rgb(105, 95, 0), rgb(255, 238, 0));
+  color: black;
+}*/
 .searchbar {
 	padding: 1em;
 	float: right;
