@@ -1,18 +1,15 @@
 <template>
-<div>
 
   <Header></Header>
   <Navbar
     v-on:SelectedList="SelectedList"
-    v-model="name">
+    v-model="filterText">
   </Navbar>
   <Main
   v-bind:list="listToSend"
-  v-bind:searchInput="name">
+  v-bind:searchInput="filterText">
   </Main>
   <Footer></Footer>
-  </div>
-<!--Byt ut bodytaggar-->
 </template>
 
 <script>
@@ -32,8 +29,8 @@ export default {
     Navbar
   },
   setup() {
-    const name = ref("");
-    return { name };
+    const filterText = ref("");
+    return { filterText };
 	},
 
   data: () => ({
