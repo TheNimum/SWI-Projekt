@@ -6,7 +6,7 @@
 </header>
 </template>
 
-<script>          
+<script>
 
 
 export default {
@@ -21,14 +21,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-header{
-  background-color: black;
-  margin:0;
-}
-.headerLogo{
-  border: dotted firebrick;
-}
-.headerLogo img{
-  max-width: 20%;
-}
+  img{
+    border-radius: 5em;
+    max-height: 10vw;
+    }
 </style>

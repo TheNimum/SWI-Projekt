@@ -1,9 +1,9 @@
 <template>
 <footer>
 	<h3>beskrivning</h3>
-	
+
 	<div class="test">
-	<p> målet är att appen ska kunna visa lista av 
+	<p> målet är att appen ska kunna visa lista av
 		olika saker inom StarWars miljön. ex karaktärer eller planeter etc </p>
 	</div>
 
@@ -12,7 +12,7 @@
 
 <script>
 
-export default ({	
+export default ({
 	data: () => ({
 
 	}),
@@ -20,9 +20,5 @@ export default ({
 </script>
 
 <style scoped>
-footer{
-	border: dotted yellow;
-	background-color:black;
-	margin:0;
-}
+
 </style>

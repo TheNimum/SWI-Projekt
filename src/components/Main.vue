@@ -47,32 +47,4 @@ export default ({
 
 <style scoped>
 
-.main-Container{
-	background-color: black;
-	border: dotted rgb(129, 199, 221);
-	margin:0;
-	overflow-x:hidden;
-}
-.displayList{
-	display: grid;
-	border: dotted darkorange;
-	margin-left: 15em;
-	margin-right: 15em;
-	margin-bottom: 10px;
-}
-
-.displayList li{
-	color:yellow;
-}
-.temp-list{
-	padding: 5px;
-	padding-left: 2em;
-
-	border: dotted hotpink;
-	transition: 0,5s;
-	margin-left: 15em;
-	margin-right: 15em;
-	text-align: left;
-	align-content: center;
-}
 </style>
