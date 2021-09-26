@@ -44,7 +44,8 @@ export default {
 	font-size: 1.5em;
 	margin: 0;
 	border:dotted rgb(255, 251, 0);
-	background-color: black;
+	border-bottom: none;
+	background: black;
 }
 .navbar a{
 	float: left;
@@ -57,7 +58,7 @@ export default {
 
 /* Change the link color to (yellow)   on hover */
 .navbar a:hover {
-	background-image: linear-gradient(rgb(105, 95, 0), rgb(255, 238, 0));
+	background-image: linear-gradient(rgb(105, 95, 0), rgb(255, 251, 0));
 	color: black;
 }
 .searchbar {
