@@ -6,8 +6,8 @@
 </header>
 </template>
 
-<script>          
-
+<!--<script>          
+TA BORT?
 
 export default {
 
@@ -17,12 +17,13 @@ export default {
   })
 
 }
-</script>
+</script>-->
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 header{
   background-color: black;
+  padding: 3em;
   margin:0;
 }
 .headerLogo{

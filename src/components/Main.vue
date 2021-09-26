@@ -1,14 +1,20 @@
 <template>
 
 
-<div class="main-Container">	
-	<div class="displayList">
-		<ul>
-			<li v-for="item in filteredList" :key="item.id" >
-				{{item.title}}
-				{{item.name}}
-			</li>
-		</ul>
+<div class="main-Container">
+	<div class="display-Item">	
+		<span v-for="item in filteredList" :key="item.id" >
+		
+				<h2>{{item.title}}</h2>
+				<p v-show="isFilmsList">Episode: {{item.episode_id}}</p>
+				<p v-show="isFilmsList">Release: {{item.release_date}}</p>
+				{{item.opening_crawl}}
+	
+				<h2>{{item.name}}</h2>
+				<p v-show="isPeopleList">Birth year: {{item.birth_year}}</p>
+				<p v-show="isPeopleList">Eye color: {{item.eye_color}}</p>
+		</span>
+				
 	</div>
 </div>
 
@@ -19,7 +25,9 @@ export default ({
 	
 	props: {
 		list: Array,
-		searchInput: String
+		searchInput: String,
+		isFilmsList: Boolean,
+		isPeopleList: Boolean
 	},
 	
 	data: () => ( {
@@ -48,31 +56,23 @@ export default ({
 <style scoped>
 
 .main-Container{
+
 	background-color: black;
 	border: dotted rgb(129, 199, 221);
-	margin:0;
 	overflow-x:hidden;
 }
-.displayList{
+.display-Item {
 	display: grid;
+	grid-template-columns: 2fr 2fr 2fr ;
 	border: dotted darkorange;
-	margin-left: 15em;
-	margin-right: 15em;
-	margin-bottom: 10px;
+	margin: 1em;
 }
 
-.displayList li{
+.display-Item span{
+	display: inline-grid;
+	margin: 1em;
 	color:yellow;
 }
-.temp-list{
-	padding: 5px;
-	padding-left: 2em;
 
-	border: dotted hotpink;
-	transition: 0,5s;
-	margin-left: 15em;
-	margin-right: 15em;
-	text-align: left;
-	align-content: center;
-}
+
 </style>

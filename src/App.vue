@@ -2,12 +2,14 @@
 
   <Header></Header>
   <Navbar
-    v-on:SelectedList="SelectedList"
+    v-on:selected-list="SelectedList"
     v-model="filterText">
   </Navbar>
   <Main 
   v-bind:list="listToSend"
-  v-bind:searchInput="filterText">
+  v-bind:searchInput="filterText"
+  v-bind:isFilmsList="showFilms"
+  v-bind:isPeopleList="showPeople">
   </Main>
   <Footer></Footer>
 </template>
@@ -37,19 +39,26 @@ export default {
     listToSend:[],
     getAllchar:[],
 		getAllFilms:[],
-    listofAllData:[]
+    listofAllData:[],
+    showFilms:false,
+    showPeople:true
     }),
 
   methods: {
     
     SelectedList(request) {
       console.log('Get list from child');
+      this.filterText='';
       switch (request){
         case 'people':
           this.listToSend=this.getAllchar
+          this.showFilms=false
+          this.showPeople=true
           break;
         case 'films':
           this.listToSend=this.getAllFilms
+          this.showPeople=false
+          this.showFilms=true
           break;
         case 'home':
           this.MergeLists();
@@ -58,7 +67,7 @@ export default {
       }
     },
 
-    async GetPeople() // hämta
+    async GetPeople() 
 		{
 			const url = `https://swapi.dev/api/people/`
 			const response = await fetch(url)

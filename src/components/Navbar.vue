@@ -1,12 +1,14 @@
 <template>
     <div class="navBox">
 	<nav class="navbar">
-		<a class="active" href="#home" @click="SendRequestToApp('home')">Home</a>
-		<a href="#people" @click="SendRequestToApp('people')">People</a><!--Ändra till Sant/falskt-->
+
+		<a href="#people" @click="SendRequestToApp('people')">People</a>
 		<a href="#films" @click="SendRequestToApp('films')">Films</a>
 	
 	<div class="searchbar">
-		<input type="text" placeholder="Search..." v-model="filterText" @input="$emit('update:modelValue', $event.target.value)"/>
+		<input type="text" placeholder="Search..." 
+			v-model="filterText" v-show="!isHidden" 
+				@input="$emit('update:modelValue', $event.target.value)"/>
 	</div>
   </nav>
 </div>
@@ -22,13 +24,15 @@ export default {
 	},
 
     data: () => ({
-        request:'',
+        isHidden: false
     }),
 
     methods: {
 		SendRequestToApp(request){
+			if(request==='films'){this.isHidden=true}
+			else{this.isHidden=false}
+
 			console.log('Emitting  listrequest to parent');
-			// emit ( namnet på funktionen, data som ska skickas )
 			this.$emit('SelectedList', request)
 		},
     }   
@@ -37,9 +41,10 @@ export default {
 <style scoped>
 
 .navBox{
-  margin: 0;
-  border:dotted rgb(255, 251, 0);
-  background-color: black;
+	font-size: 1.5em;
+	margin: 0;
+	border:dotted rgb(255, 251, 0);
+	background-color: black;
 }
 .navbar a{
 	float: left;
@@ -48,21 +53,28 @@ export default {
 	text-align: center;
 	padding:1em;
 	text-decoration: none;
-	}
+}
 
 /* Change the link color to (yellow)   on hover */
 .navbar a:hover {
 	background-image: linear-gradient(rgb(105, 95, 0), rgb(255, 238, 0));
 	color: black;
-	}
-/* Style the "active" element to highlight the current page */
-/*.navbar a.active {
-  background-image: linear-gradient(rgb(105, 95, 0), rgb(255, 238, 0));
-  color: black;
-}*/
+}
 .searchbar {
-	padding: 1em;
+	width:30%;
+	margin: 0.5em;
 	float: right;
+}
+input[type=text]{
+	color:white;
+	font-size: 70%;
+	outline: none;
+	border-radius: 5px;
+	border: 2px outset whitesmoke;
+	background:none;
+	width: 90%;
+	padding: 12px 20px;
+	box-sizing: border-box;
 }
 .navBox:after {
     content: "";
