@@ -103,5 +103,21 @@ export default {
 </script>
 
 <style>
-
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #fbff00;
+}
+html {
+  background: url(https://images.wallpaperscraft.com/image/single/stars_space_sky_glitter_116409_3840x2400.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  }
+body {
+  margin: 3em;
+}
 </style>
