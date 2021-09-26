@@ -2,9 +2,9 @@
 
 
 <div class="main-Container">
-	<div class="display-Item" v-if="isFilmsList">	
+	<div class="display-Item" v-if="isFilmsList">
 		<span v-for="item in filteredList" :key="item.id" >
-		
+
 				<h2>{{item.title}}</h2>
 				<p>Episode: {{item.episode_id}}</p>
 				<p>Release: {{item.release_date}}</p>

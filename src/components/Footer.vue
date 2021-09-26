@@ -8,7 +8,7 @@
 			<p>Termin: HT 2021</p>
 		</div>
 		<div class="right">
-			<p>Syftet med skapandet av appen "The Quasar" att träna på teknikerna som används för att 
+			<p>Syftet med skapandet av appen "The Quasar" är att träna på teknikerna som används för att 
 				bygga moderna webbappar, samt att ge kunskaper för att underlätta vår
 				fortsatta utveckling inom området. Att jobba med webbapplikationer</p>
 			<h3> Appen ska kunna:</h3> 

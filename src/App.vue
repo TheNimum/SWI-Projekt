@@ -61,10 +61,6 @@ export default {
           this.showPeople=false
           this.showFilms=true
           break;
-        case 'home':
-          this.MergeLists();
-          this.listToSend=this.listofAllData
-          break;
       }
     },
 
@@ -85,17 +81,10 @@ export default {
 			const data = await response.json()
 			this.getAllFilms = data.results;
 			console.log('Get request Films from api ', data)
-		},
-
-    MergeLists()
-    {
-      console.log('Merge lists')
-      this.listofAllData= this.getAllchar.concat(this.getAllFilms);
-    }
+		}
 
   },
     mounted(){
-    this.MergeLists();
 		this.GetPeople();
 		this.GetFilms();
     }
