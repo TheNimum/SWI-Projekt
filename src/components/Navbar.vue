@@ -4,7 +4,7 @@
 
 		<a href="#people" @click="SendRequestToApp('people')">People</a>
 		<a href="#films" @click="SendRequestToApp('films')">Films</a>
-	
+
 	<div class="searchbar">
 		<input type="text" placeholder="Search..." 
 			v-model="filterText" v-show="!isHidden" 
@@ -35,7 +35,7 @@ export default {
 			console.log('Emitting  listrequest to parent');
 			this.$emit('SelectedList', request)
 		},
-    }   
+    }
 }
 </script>
 <style scoped>

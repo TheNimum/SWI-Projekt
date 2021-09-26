@@ -22,14 +22,14 @@
 
 <script>
 export default ({
-	
+
 	props: {
 		list: Array,
 		searchInput: String,
 		isFilmsList: Boolean,
 		isPeopleList: Boolean
 	},
-	
+
 	data: () => ( {
 		pressPeople: false,
 		showPeople: false,
